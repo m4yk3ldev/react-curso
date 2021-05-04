@@ -1,12 +1,15 @@
 import './App.css';
-import MovieList from "./components/movie/list";
 import {Component} from "react";
 
+import MovieList from "./components/movie/list";
+import MovieDetails from "./components/movie/detail";
+
+
 class App extends Component {
-    movies = ['titanic', 'avatar']
 
     state = {
-        movies: []
+        movies: [],
+        selectedMovie: null
     }
 
     componentDidMount() {
@@ -20,14 +23,19 @@ class App extends Component {
             .catch(error => console.log(error))
     }
 
+    movieClicked = movie => {
+        this.setState({selectedMovie: movie})
+    }
+
     render() {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1>Movie Rater</h1>
-                    <MovieList movies={this.state.movies}/>
-                </header>
+                <h1>Movie Rater</h1>
+                <div className="layout">
+                    <MovieList movies={this.state.movies} movieClicked={this.movieClicked}/>
+                    <MovieDetails movie={this.state.selectedMovie}/>
+                </div>
             </div>
         );
     }

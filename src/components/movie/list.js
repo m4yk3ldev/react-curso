@@ -1,19 +1,23 @@
 import React from "react";
 
+
 function MovieList(props) {
 
+    const movieClicked = movie => event => {
+        props.movieClicked(movie)
+    }
     return (
-        <React.Fragment>
+        <div>
             {
                 props.movies.map(movie => {
                     return (
-                        <div key={movie.id}>
+                        <div onClick={movieClicked(movie)} key={movie.id}>
                             <h3>{movie.title}</h3>
                         </div>
                     )
                 })
             }
-        </React.Fragment>
+        </div>
     )
 }
 

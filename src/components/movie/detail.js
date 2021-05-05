@@ -9,6 +9,7 @@ class MovieDetails extends Component {
     }
 
     highlightRate = high => evt => {
+        console.log(high)
         this.setState({highlighted: high})
     }
 
@@ -21,7 +22,8 @@ class MovieDetails extends Component {
                     <div>
                         <h3>{mov.title}</h3>
                         {[...Array(5)].map((e, i) => {
-                            return <FontAwesomeIcon key={mov.title} icon={faStar} color={mov.avg_rating > i ? 'orange' : ''}/>
+                            return <FontAwesomeIcon key={mov.title} icon={faStar}
+                                                    color={mov.avg_rating > i ? 'orange' : ''}/>
                         })}
                         ({mov.no_of_ratings})
                         <p>{mov.description}</p>

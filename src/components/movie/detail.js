@@ -13,7 +13,6 @@ class MovieDetails extends Component {
     }
 
     rateClicked = stars => evt => {
-        console.log(stars)
         fetch("http://127.0.0.1:8000/api/movies/" + this.props.movie.id + "/rate_movie/", {
             method: 'POST',
             headers: {
@@ -21,8 +20,17 @@ class MovieDetails extends Component {
                 "Content-Type": 'application/json'
             },
             body: JSON.stringify({stars: stars})
-        }).then(resp => resp.json())
-            .then(res => this.setState({movies: res}))
+        }).then(resp => resp.json()).then(res => this.getDetails())
+            .catch(error => console.log(error))
+    }
+    getDetails = () => {
+        fetch("http://127.0.0.1:8000/api/movies/" + this.props.movie.id + "/", {
+            method: 'GET',
+            headers: {
+                "Authorization": "Token 5fb8a252d3c18eb65fffb28a01f085a7fc0fb4cd",
+                "Content-Type": 'application/json'
+            },
+        }).then(resp => resp.json()).then(res => this.props.updateMovie(res))
             .catch(error => console.log(error))
     }
 

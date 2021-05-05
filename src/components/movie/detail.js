@@ -9,8 +9,21 @@ class MovieDetails extends Component {
     }
 
     highlightRate = high => evt => {
-        console.log(high)
         this.setState({highlighted: high})
+    }
+
+    rateClicked = stars => evt => {
+        console.log(stars)
+        fetch("http://127.0.0.1:8000/api/movies/" + this.props.movie.id + "/rate_movie/", {
+            method: 'POST',
+            headers: {
+                "Authorization": "Token 5fb8a252d3c18eb65fffb28a01f085a7fc0fb4cd",
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({stars: stars})
+        }).then(resp => resp.json())
+            .then(res => this.setState({movies: res}))
+            .catch(error => console.log(error))
     }
 
     render() {
@@ -36,9 +49,11 @@ class MovieDetails extends Component {
                         <div className="rate-container">
                             <h2>Rate it !!!</h2>
                             {[...Array(5)].map((e, i) => {
-                                return <FontAwesomeIcon icon={faStar}
+                                return <FontAwesomeIcon key={i} icon={faStar}
                                                         color={this.state.highlighted > i - 1 ? 'purple' : ''}
-                                                        onMouseEnter={this.highlightRate()}/>
+                                                        onMouseEnter={this.highlightRate(i)}
+                                                        onMouseLeave={this.highlightRate(-1)}
+                                                        onClick={this.rateClicked(i + 1)}/>
                             })}
                         </div>
                     </div>

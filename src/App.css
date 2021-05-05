@@ -13,3 +13,12 @@
     grid-template-columns: 1fr 1fr;
     text-align: left;
 }
+
+.rate-container {
+    border-top: 2px solid purple;
+}
+
+.rate-container span.fa {
+    font-size: 2em;
+    cursor: pointer;
+}

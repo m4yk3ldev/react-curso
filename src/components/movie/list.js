@@ -2,7 +2,6 @@ import React from "react";
 
 
 function MovieList(props) {
-
     const movieClicked = movie => event => {
         props.movieClicked(movie)
     }
@@ -13,6 +12,7 @@ function MovieList(props) {
                     return (
                         <div onClick={movieClicked(movie)} key={movie.id}>
                             <h3>{movie.title}</h3>
+
                         </div>
                     )
                 })

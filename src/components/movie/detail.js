@@ -21,10 +21,16 @@ class MovieDetails extends Component {
                 {mov ? (
                     <div>
                         <h3>{mov.title}</h3>
-                        {[...Array(5)].map((e, i) => {
-                            return <FontAwesomeIcon key={mov.title} icon={faStar}
-                                                    color={mov.avg_rating > i ? 'orange' : ''}/>
-                        })}
+                        <FontAwesomeIcon icon={faStar}
+                                         color={mov.avg_rating > 0 ? 'orange' : ''}/>
+                        <FontAwesomeIcon icon={faStar}
+                                         color={mov.avg_rating > 1 ? 'orange' : ''}/>
+                        <FontAwesomeIcon icon={faStar}
+                                         color={mov.avg_rating > 2 ? 'orange' : ''}/>
+                        <FontAwesomeIcon icon={faStar}
+                                         color={mov.avg_rating > 3 ? 'orange' : ''}/>
+                        <FontAwesomeIcon icon={faStar}
+                                         color={mov.avg_rating > 4 ? 'orange' : ''}/>
                         ({mov.no_of_ratings})
                         <p>{mov.description}</p>
                         <div className="rate-container">

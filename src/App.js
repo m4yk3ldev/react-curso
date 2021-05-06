@@ -6,7 +6,6 @@ import MovieDetails from "./components/movie/detail";
 
 
 class App extends Component {
-
     state = {
         movies: [],
         selectedMovie: null
@@ -16,7 +15,7 @@ class App extends Component {
         fetch("http://127.0.0.1:8000/api/movies/", {
             method: 'GET',
             headers: {
-                "Authorization": "Token 5fb8a252d3c18eb65fffb28a01f085a7fc0fb4cd"
+                "Authorization": "Token 06ec4b621d5c3a32730c87ecd69fbf20e36c5b9c"
             }
         }).then(resp => resp.json())
             .then(res => this.setState({movies: res}))
@@ -28,7 +27,6 @@ class App extends Component {
     }
 
     render() {
-
         return (
             <div className="App">
                 <h1>Movie Rater</h1>

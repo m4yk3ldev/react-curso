@@ -16,7 +16,7 @@ class MovieDetails extends Component {
         fetch("http://127.0.0.1:8000/api/movies/" + this.props.movie.id + "/rate_movie/", {
             method: 'POST',
             headers: {
-                "Authorization": "Token 5fb8a252d3c18eb65fffb28a01f085a7fc0fb4cd",
+                "Authorization": "Token 06ec4b621d5c3a32730c87ecd69fbf20e36c5b9c",
                 "Content-Type": 'application/json'
             },
             body: JSON.stringify({stars: stars})
@@ -27,7 +27,7 @@ class MovieDetails extends Component {
         fetch("http://127.0.0.1:8000/api/movies/" + this.props.movie.id + "/", {
             method: 'GET',
             headers: {
-                "Authorization": "Token 5fb8a252d3c18eb65fffb28a01f085a7fc0fb4cd",
+                "Authorization": "Token 06ec4b621d5c3a32730c87ecd69fbf20e36c5b9c",
                 "Content-Type": 'application/json'
             },
         }).then(resp => resp.json()).then(res => this.props.updateMovie(res))
@@ -37,7 +37,7 @@ class MovieDetails extends Component {
     render() {
         const mov = this.props.movie
         return (
-            <React.Fragment>
+            <div>
                 <h3>Detalles de la pelicula</h3>
                 {mov ? (
                     <div>
@@ -66,7 +66,7 @@ class MovieDetails extends Component {
                         </div>
                     </div>
                 ) : null}
-            </React.Fragment>
+            </div>
         )
     }
 
